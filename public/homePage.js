@@ -40,10 +40,8 @@ function getCurrencyRates() {
     });
 }
 
-setTimeout(function interval() {
-        getCurrencyRates();
-        setTimeout(interval, 1000);
-    }, 1000);
+getCurrencyRates();
+setInterval(getCurrencyRates, 60000);
 
 
 
@@ -57,9 +55,9 @@ moneyManager.addMoneyCallback = (money) => {
         if (response.success) {
             console.log(response);
             ProfileWidget.showProfile(response.data);
-            message.setMessage(response.success, "Баланс пополнен" );
+            moneyManager.setMessage(response.success, "Баланс пополнен" );
         } else {
-            message.setMessage(response.success, response.error);
+            moneyManager.setMessage(response.success, response.error);
         }
     });
 }
@@ -74,9 +72,9 @@ moneyManager.conversionMoneyCallback = (moneyToConvert) => {
         if (response.success) {
             console.log(response);
             ProfileWidget.showProfile(response.data);
-            message.setMessage(response.success, "Обмен выполнен" );
+            moneyManager.setMessage(response.success, "Обмен выполнен" );
         } else {
-            message.setMessage(response.success, response.error);
+            moneyManager.setMessage(response.success, response.error);
         }
     });
 }
@@ -92,9 +90,9 @@ moneyManager.sendMoneyCallback = (moneyToTransfer) => {
         if (response.success) {
             console.log(response);
             ProfileWidget.showProfile(response.data);
-            message.setMessage(response.success, "Перевод выполнен" );
+            moneyManager.setMessage(response.success, "Перевод выполнен" );
         } else {
-            message.setMessage(response.success, response.error);
+            moneyManager.setMessage(response.success, response.error);
         }
     });
 }

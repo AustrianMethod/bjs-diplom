@@ -7,7 +7,7 @@ userForm.loginFormCallback = ({login, password}) => {
         if (data.success) {   
             location.reload();
         } else {
-            alert(data.error);    
+            userForm.setLoginErrorMessage(data.error);    
         };
     });
 };
@@ -17,7 +17,7 @@ userForm.registerFormCallback = ({login, password}) =>
         if (data.success) {   
             location.reload();
         } else {
-            alert(data.error);    
+            userForm.setRegisterErrorMessage(data.error);     
         };
     });
 
